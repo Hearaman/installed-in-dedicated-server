@@ -93,6 +93,6 @@ sudo systemctl status jenkins
 ```
 Jenkins with new port need to be allowed at firewall.
 ```bash
-sudo ufw allow 8080
+sudo ufw allow 9090
 sudo ufw status
 ```
