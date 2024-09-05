@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-##### Installed Apache2 Server
+## Install Apache2 Server
 ```bash
 sudo apt install apache2 -y
 
@@ -29,7 +29,7 @@ sudo ufw allow 'Apache'
 sudo ufw allow 'Apache Full'
 ```
 
-##### Install Jenkins
+## Install Jenkins
 
 Jenkins needs JDK17, so install JDK17 first.
 ```bash
@@ -93,6 +93,13 @@ sudo systemctl status jenkins
 ```
 Jenkins with new port need to be allowed at firewall.
 ```bash
-sudo ufw allow 9090
+sudo ufw allow 8080
 sudo ufw status
 ```
+
+Access jenkins `hostname_or_ip:port`
+Execute below command for initial password
+```
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
+```
+
