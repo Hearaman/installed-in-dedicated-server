@@ -1,7 +1,5 @@
 # installed-in-dedicated-server
 
-# installed-in-dedicated-server
-
 ##### Logged in to remote dedicated server using SSH
 
 ```bash
@@ -60,9 +58,24 @@ sudo apt-get install jenkins
 ```
 By default, Jenkins uses port `8080` so use another port to run it, ex: `9090`
 
-Change it in Jenkin config file `/lib/systemd/system/jenkins.service`
+Change it in Jenkin config file `/lib/systemd/system/jenkins.service` (Not worked for me)
 ```bash
 Environment="JENKINS_PORT=9090"
+```
+Sometime, modification will not come to effect. Please reload the demons
+
+```bash
+systemctl daemon-reload
+```
+
+If above configuration is not working, follow below step
+```bash
+sudo nano /etc/default/jenkins
+
+# update & save
+HTTP_POST=9090
+
+systemctl daemon-reload
 ```
 
 ```bash
@@ -77,4 +90,9 @@ sudo systemctl stop jenkins
 
 # status
 sudo systemctl status jenkins
+```
+Jenkins with new port need to be allowed at firewall.
+```bash
+sudo ufw allow 8080
+sudo ufw status
 ```
