@@ -1,4 +1,4 @@
-# installed-in-dedicated-server
+# Softwares installed in Ubuntu Server
 
 ##### Logged in to remote dedicated server using SSH
 
