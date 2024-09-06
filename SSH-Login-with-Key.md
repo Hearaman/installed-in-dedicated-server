@@ -10,12 +10,14 @@ Be on your localhost/computer and create SSH key pair. Type following command an
 # Change directory to `.ssh`
 cd ~/.ssh
 
-# 
 ssh-keygen
 ```
 **Example:**
+
      Generating public/private ed25519 key pair.
+     
      Enter file in which to save the key (/home/username/.ssh/id_ed25519): `my_ssh_key`
+     
 
 It creates both private key and public key visible in folder `~/.ssh`
 
