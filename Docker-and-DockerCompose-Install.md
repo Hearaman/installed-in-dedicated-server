@@ -32,7 +32,7 @@ docker run hello-world
 # Enable Docker to start on boot, and start the Docker service.
 sudo systemctl enable docker
 sudo systemctl start docker
-
+```
 
 ## Install Docker Compose
 At the time of this writing, the most current stable version is 2.3.3. Use the following command to download:
