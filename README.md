@@ -2,18 +2,18 @@
 
 ##### Logged in to remote dedicated server using SSH
 
-```bash
+```sh
 ssh username@ipaddress -p port_number
 ```
 
 ##### Updated ubuntu system
-```bash
+```sh
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
 ## Install Apache2 Server
-```bash
+```sh
 sudo apt install apache2 -y
 
 # Enable apache2 (optional)
@@ -32,7 +32,7 @@ sudo ufw allow 'Apache Full'
 ## Install Jenkins
 
 Jenkins needs JDK17, so install JDK17 first.
-```bash
+```sh
 sudo apt install openjdk-17-jdk -y
 
 # Check java version
@@ -44,7 +44,7 @@ Follow below url to latest information and instructions guidelines about Jenkins
 
 Now, Install Jenkins
 
-```bash
+```sh
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 
@@ -59,17 +59,17 @@ sudo apt-get install jenkins
 By default, Jenkins uses port `8080` so use another port to run it, ex: `9090`
 
 Change it in Jenkin config file `/lib/systemd/system/jenkins.service` (Not worked for me)
-```bash
+```sh
 Environment="JENKINS_PORT=9090"
 ```
 Sometime, modification will not come to effect. Please reload the demons
 
-```bash
+```sh
 systemctl daemon-reload
 ```
 
 If above configuration is not working, follow below step
-```bash
+```sh
 sudo nano /etc/default/jenkins
 
 # update & save
@@ -78,7 +78,7 @@ HTTP_POST=9090
 systemctl daemon-reload
 ```
 
-```bash
+```sh
 # enable server
 sudo systemctl enable jenkins
 
@@ -92,14 +92,14 @@ sudo systemctl stop jenkins
 sudo systemctl status jenkins
 ```
 Jenkins with new port need to be allowed at firewall.
-```bash
+```sh
 sudo ufw allow 8080
 sudo ufw status
 ```
 
 Access jenkins `hostname_or_ip:port`
 Execute below command for initial password
-```
+```sh
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
 ```
 
