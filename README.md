@@ -103,3 +103,41 @@ Execute below command for initial password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
 ```
 
+
+### Install Kubernetes
+
+> **Note:** Kubernetes release candidate has been moved from `https://packages.cloud.google.com` to `pkgs.k8s.io`. 
+**Executing bellow command may result errors.**
+`curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg` and 
+`echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list` 
+**Error** 
+Err:10 https://packages.cloud.google.com/apt kubernetes-xenial Release  404  Not Found [IP: 142.250.183.206 443]
+
+```sh
+# Add kubernetes Signing key
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+# Add software repositories
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# Update
+sudo apt update
+```
+
+#### Install Kubernetes Tools
+Each Kubernetes deployment consists of three separate tools:
+- **Kubeadm:** A tool that initializes a Kubernetes cluster by fast-tracking the setup using community-sourced best practices.
+- **Kubelet:** The work package that runs on every node and starts containers. The tool gives you command-line access to clusters.
+- **Kubectl:** The command-line interface for interacting with clusters.
+
+Execute the following commands on each server node to install the Kubernetes tools:
+
+```sh
+sudo apt install kubeadm kubelet kubectl
+sudo apt-mark hold kubeadm kubelet kubectl
+
+# Verify installation
+kubeadm version
+```
+
+
